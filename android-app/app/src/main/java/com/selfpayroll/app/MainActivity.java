@@ -1,5 +1,9 @@
 package com.selfpayroll.app;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
@@ -15,7 +19,17 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        updateManager = new UpdateManager(this);
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
+                        != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(
+                    new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                    2026
+            );
+        }
+
+updateManager = new UpdateManager(this);
         updateManager.checkAutomatically();
 
         super.onCreate(savedInstanceState);
