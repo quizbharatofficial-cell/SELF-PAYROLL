@@ -30,6 +30,11 @@ public class UpdateManager {
 
     private final Activity activity;
 
+    private volatile String latestVersion = "";
+    private volatile String latestApkUrl = "";
+    private volatile String latestWhatsNew = "";
+
+
     public UpdateManager(Activity activity) {
         this.activity = activity;
         createNotificationChannel();
@@ -104,6 +109,10 @@ public class UpdateManager {
                         }
                     }
                 }
+
+                latestVersion = version;
+                latestApkUrl = apkUrl;
+                latestWhatsNew = whatsNew;
 
                 String installedVersion =
                         getInstalledVersion();
@@ -342,4 +351,18 @@ public class UpdateManager {
             );
         }
     }
+
+
+    public String getLatestVersion() {
+        return latestVersion;
+    }
+
+    public String getLatestApkUrl() {
+        return latestApkUrl;
+    }
+
+    public String getLatestWhatsNew() {
+        return latestWhatsNew;
+    }
+
 }

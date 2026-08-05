@@ -244,44 +244,6 @@ Save Settings
 
 </section>
 
-
-<section class="form-card" id="updateCenter">
-
-<h3 class="section-title">App Update Center</h3>
-
-<div class="form-grid">
-
-<div class="field">
-<label>Current Version</label>
-<input id="currentVersion" value="Loading..." readonly>
-</div>
-
-<div class="field">
-<label>Latest Version</label>
-<input id="latestVersion" value="Check Required" readonly>
-</div>
-
-</div>
-
-<div class="form-actions">
-
-<button type="button"
-class="btn btn-secondary"
-onclick="checkNativeUpdate()">
-Check for Update
-</button>
-
-<button type="button"
-class="btn btn-primary"
-onclick="checkNativeUpdate()">
-Download Latest APK
-</button>
-
-</div>
-
-</section>
-
-
 </form>
 
 </main>

@@ -191,3 +191,15 @@ function notify(message, type) {
 }
 
 loadSettings();
+
+
+function initUpdateCenter() {
+    const current = document.getElementById("currentVersion");
+    if (current && window.Android &&
+        typeof Android.getAppVersion === "function") {
+        current.value = Android.getAppVersion();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", initUpdateCenter);
+
