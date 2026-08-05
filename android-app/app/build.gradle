@@ -14,18 +14,27 @@ android {
         versionName "1.0.3"
     }
 
+    def keystoreFile = System.getenv("KEYSTORE_FILE")
+    def keystorePassword = System.getenv("KEYSTORE_PASSWORD")
+    def keystoreAlias = System.getenv("KEY_ALIAS")
+    def keystoreKeyPassword = System.getenv("KEY_PASSWORD")
+
     signingConfigs {
-        release {
-            storeFile file(System.getenv("KEYSTORE_FILE"))
-            storePassword System.getenv("KEYSTORE_PASSWORD")
-            keyAlias System.getenv("KEY_ALIAS")
-            keyPassword System.getenv("KEY_PASSWORD")
+        if (keystoreFile) {
+            release {
+                storeFile file(keystoreFile)
+                storePassword keystorePassword
+                keyAlias keystoreAlias
+                keyPassword keystoreKeyPassword
+            }
         }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            if (keystoreFile) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled false
         }
     }
