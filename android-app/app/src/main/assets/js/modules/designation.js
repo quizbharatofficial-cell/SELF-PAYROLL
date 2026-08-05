@@ -6,6 +6,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("designationForm");
   const recordId = document.getElementById("recordId");
   const designationCode = document.getElementById("designationCode");
+
+/* SMART_CODE_AUTOFILL_DESIGNATION */
+function ensureSmartCode() {
+  if (
+    typeof CodeGenerator !== "undefined" &&
+    designationCode &&
+    !designationCode.value.trim()
+  ) {
+    designationCode.value =
+      CodeGenerator.generate("designation");
+  }
+}
+
+if (designationCode) {
+  designationCode.setAttribute("minlength", "6");
+  designationCode.setAttribute("maxlength", "10");
+
+  designationCode.addEventListener("input", function() {
+    this.value = this.value
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, "")
+      .slice(0, 10);
+  });
+
+  designationCode.addEventListener("blur", function() {
+    const value = this.value.trim();
+
+    if (
+      value &&
+      typeof CodeGenerator !== "undefined" &&
+      !CodeGenerator.isValid(value)
+    ) {
+      alert(
+        "Code must contain 6 to 10 letters/numbers."
+      );
+      this.focus();
+    }
+  });
+
+  ensureSmartCode();
+}
+
   const designationName = document.getElementById("designationName");
   const department = document.getElementById("department");
   const grade = document.getElementById("grade");
@@ -239,7 +281,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const code =
         designationCode.value
           .trim()
-          .toUpperCase();
+          .toUpperCase() ||
+        CodeGenerator.generate("designation");
 
       const name =
         designationName.value.trim();

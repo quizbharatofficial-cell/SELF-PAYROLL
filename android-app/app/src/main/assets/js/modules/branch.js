@@ -6,6 +6,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const recordId = document.getElementById("recordId");
 
   const branchCode = document.getElementById("branchCode");
+
+/* SMART_CODE_AUTOFILL_LOCATION */
+function ensureSmartCode() {
+  if (
+    typeof CodeGenerator !== "undefined" &&
+    branchCode &&
+    !branchCode.value.trim()
+  ) {
+    branchCode.value =
+      CodeGenerator.generate("location");
+  }
+}
+
+if (branchCode) {
+  branchCode.setAttribute("minlength", "6");
+  branchCode.setAttribute("maxlength", "10");
+
+  branchCode.addEventListener("input", function() {
+    this.value = this.value
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, "")
+      .slice(0, 10);
+  });
+
+  branchCode.addEventListener("blur", function() {
+    const value = this.value.trim();
+
+    if (
+      value &&
+      typeof CodeGenerator !== "undefined" &&
+      !CodeGenerator.isValid(value)
+    ) {
+      alert(
+        "Code must contain 6 to 10 letters/numbers."
+      );
+      this.focus();
+    }
+  });
+
+  ensureSmartCode();
+}
+
   const branchName = document.getElementById("branchName");
   const contactPerson = document.getElementById("contactPerson");
   const branchPhone = document.getElementById("branchPhone");
@@ -174,7 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const code = branchCode.value
       .trim()
-      .toUpperCase();
+      .toUpperCase() ||
+      CodeGenerator.generate("location");
 
     const name = branchName.value.trim();
 

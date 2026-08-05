@@ -2,6 +2,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("departmentForm");
   const recordId = document.getElementById("recordId");
   const departmentCode = document.getElementById("departmentCode");
+
+/* SMART_CODE_AUTOFILL_DEPARTMENT */
+function ensureSmartCode() {
+  if (
+    typeof CodeGenerator !== "undefined" &&
+    departmentCode &&
+    !departmentCode.value.trim()
+  ) {
+    departmentCode.value =
+      CodeGenerator.generate("department");
+  }
+}
+
+if (departmentCode) {
+  departmentCode.setAttribute("minlength", "6");
+  departmentCode.setAttribute("maxlength", "10");
+
+  departmentCode.addEventListener("input", function() {
+    this.value = this.value
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, "")
+      .slice(0, 10);
+  });
+
+  departmentCode.addEventListener("blur", function() {
+    const value = this.value.trim();
+
+    if (
+      value &&
+      typeof CodeGenerator !== "undefined" &&
+      !CodeGenerator.isValid(value)
+    ) {
+      alert(
+        "Code must contain 6 to 10 letters/numbers."
+      );
+      this.focus();
+    }
+  });
+
+  ensureSmartCode();
+}
+
   const departmentName = document.getElementById("departmentName");
   const branchSelect = document.getElementById("branch");
   const status = document.getElementById("status");
@@ -192,7 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", event => {
     event.preventDefault();
 
-    const code = departmentCode.value.trim();
+    const code =
+      departmentCode.value.trim().toUpperCase() ||
+      CodeGenerator.generate("department");
     const name = departmentName.value.trim();
 
     if (!code || !name) {

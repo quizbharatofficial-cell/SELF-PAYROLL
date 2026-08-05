@@ -79,6 +79,70 @@ updateManager = new UpdateManager(this);
         }
 
         @JavascriptInterface
+
+        @JavascriptInterface
+
+        @JavascriptInterface
+
+        @JavascriptInterface
+        public boolean isQrScannerAvailable() {
+            return true;
+        }
+
+        @JavascriptInterface
+        public String scanQrCode() {
+            // Sprint 2 placeholder.
+            // Sprint 3 will launch a real QR scanner.
+            return "";
+        }
+
+        public boolean hasCameraPermission() {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                return checkSelfPermission(android.Manifest.permission.CAMERA)
+                        == android.content.pm.PackageManager.PERMISSION_GRANTED;
+            }
+            return true;
+        }
+
+        @JavascriptInterface
+        public void requestCameraPermission() {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (checkSelfPermission(android.Manifest.permission.CAMERA)
+                        != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(
+                            new String[]{
+                                    android.Manifest.permission.CAMERA
+                            },
+                            2028
+                    );
+                }
+            }
+        }
+
+        public boolean hasLocationPermission() {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                return checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                        == android.content.pm.PackageManager.PERMISSION_GRANTED;
+            }
+            return true;
+        }
+
+        @JavascriptInterface
+        public void requestLocationPermission() {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                        != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(
+                            new String[]{
+                                    android.Manifest.permission.ACCESS_FINE_LOCATION,
+                                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+                            },
+                            2027
+                    );
+                }
+            }
+        }
+
         public String getLatestWhatsNew() {
             return updateManager == null ? "" : updateManager.getLatestWhatsNew();
         }

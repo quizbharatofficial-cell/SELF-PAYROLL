@@ -11,3 +11,7 @@ self-hrms-release.jks
 keystore.properties
 local.properties
 *.jks
+
+*.bak
+*.before-final
+*.before-smart-code

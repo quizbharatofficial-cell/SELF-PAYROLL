@@ -10,6 +10,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const recordId = document.getElementById("recordId");
 
   const employeeCode = document.getElementById("employeeCode");
+
+/* SMART_CODE_AUTOFILL_EMPLOYEE */
+function ensureSmartCode() {
+  if (
+    typeof CodeGenerator !== "undefined" &&
+    employeeCode &&
+    !employeeCode.value.trim()
+  ) {
+    employeeCode.value =
+      CodeGenerator.generate("employee");
+  }
+}
+
+if (employeeCode) {
+  employeeCode.setAttribute("minlength", "6");
+  employeeCode.setAttribute("maxlength", "10");
+
+  employeeCode.addEventListener("input", function() {
+    this.value = this.value
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, "")
+      .slice(0, 10);
+  });
+
+  employeeCode.addEventListener("blur", function() {
+    const value = this.value.trim();
+
+    if (
+      value &&
+      typeof CodeGenerator !== "undefined" &&
+      !CodeGenerator.isValid(value)
+    ) {
+      alert(
+        "Code must contain 6 to 10 letters/numbers."
+      );
+      this.focus();
+    }
+  });
+
+  ensureSmartCode();
+}
+
   const employeeName = document.getElementById("employeeName");
   const fatherSpouseName = document.getElementById("fatherSpouseName");
   const dob = document.getElementById("dob");
@@ -489,7 +531,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const editingId = recordId.value;
 
     const code =
-      employeeCode.value.trim().toUpperCase();
+      employeeCode.value.trim().toUpperCase() ||
+      CodeGenerator.generate("employee");
 
 
     const duplicate = employees.some(item =>

@@ -203,3 +203,51 @@ function initUpdateCenter() {
 
 document.addEventListener("DOMContentLoaded", initUpdateCenter);
 
+
+
+/* =========================================================
+   Attendance Rules Initialization
+========================================================= */
+
+(function(){
+
+    if(!localStorage.getItem("attendanceRules")){
+
+        localStorage.setItem(
+            "attendanceRules",
+            JSON.stringify({
+                manualPunch:true,
+                widgetPunch:true,
+                mobilePunch:true,
+                webPunch:true,
+
+                gpsRequired:false,
+                selfieRequired:false,
+                qrRequired:false,
+                geofenceRequired:false,
+
+                offlineAllowed:true,
+                autoSync:true,
+
+                lateRule:true,
+                earlyOutRule:true,
+                halfDayRule:true,
+
+                otMode:"manual",
+                shiftMode:"single",
+                nightShift:true,
+
+                breakMode:"manual",
+
+                graceMinutes:10,
+                maxGpsDistance:100,
+
+                requireApprovalForOT:false
+            })
+        );
+
+        console.log("Attendance Rules initialized.");
+
+    }
+
+})();
