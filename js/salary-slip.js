@@ -76,7 +76,7 @@ function renderSlip(payroll) {
     HRMS.getObject("salarySettings");
 
   $("companyName").textContent =
-    settings.companyName || "SELF HRMS";
+    settings.companyName || "SELF PAYROLL";
 
   $("companyAddress").textContent =
     settings.companyAddress || "";

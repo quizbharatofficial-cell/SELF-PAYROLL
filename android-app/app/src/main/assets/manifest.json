@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "SELF HRMS - Attendance & Payroll",
-  "short_name": "SELF HRMS",
-  "description": "SELF HRMS with employee masters, self attendance, payroll, reports and salary slips",
+  "name": "SELF PAYROLL - Attendance & Payroll",
+  "short_name": "SELF PAYROLL",
+  "description": "SELF PAYROLL with employee masters, self attendance, payroll, reports and salary slips",
   "start_url": "./login.html",
   "scope": "./",
   "display": "standalone",
