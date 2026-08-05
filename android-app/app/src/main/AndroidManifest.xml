@@ -3,7 +3,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application
+    <application android:icon="@drawable/self_payroll_icon" android:roundIcon="@drawable/self_payroll_icon"
         android:allowBackup="true"
         android:label="SELF PAYROLL"
         android:theme="@style/AppTheme"
