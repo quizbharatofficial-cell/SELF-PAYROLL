@@ -8,10 +8,16 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
 
+    private UpdateManager updateManager;
+
+
     private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateManager = new UpdateManager(this);
+        updateManager.checkAutomatically();
+
         super.onCreate(savedInstanceState);
 
         webView = new WebView(this);
@@ -34,4 +40,12 @@ public class MainActivity extends Activity {
             super.onBackPressed();
         }
     }
+
+    public void checkForUpdate() {
+        if (updateManager == null) {
+            updateManager = new UpdateManager(this);
+        }
+        updateManager.checkManually();
+    }
+
 }
