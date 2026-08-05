@@ -1195,6 +1195,18 @@ function saveManualAttendance(){
 
         try{
 
+            const validation =
+                AttendanceEngine.validate({
+                    gps: true,
+                    selfie: true,
+                    qr: true
+                });
+
+            if(!validation.ok){
+                alert(validation.message);
+                return;
+            }
+
             timeData =
                 calculateManualTimes(
                     date,
@@ -2242,4 +2254,4 @@ if(
 
 </body>
 </html>.
-*/
+

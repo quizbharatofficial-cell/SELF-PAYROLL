@@ -1,0 +1,24 @@
+<!-- Main application functions -->
+<script src="./app.js"></script>
+
+<!-- Attendance Rule Engine -->
+<script src="js/attendance/attendance-rules.js"></script>
+<script src="js/attendance/attendance-engine.js"></script>
+<script src="js/attendance/attendance-gps.js"></script>
+<script src="js/attendance/attendance-camera.js"></script>
+<script src="js/attendance/attendance-qr.js"></script>
+<script src="js/attendance/attendance-sync.js"></script>
+
+<script>
+
+/*
+=========================================================
+PART 2 JAVASCRIPT WILL CONTINUE FROM HERE
+=========================================================
+*/
+
+/* =====================================================
+   ATTENDANCE PAGE - PART 2
+===================================================== */
+
+let editingDate = null;
