@@ -79,13 +79,7 @@ updateManager = new UpdateManager(this);
         }
 
         @JavascriptInterface
-
-        @JavascriptInterface
-
-        @JavascriptInterface
-
-        @JavascriptInterface
-        public boolean isQrScannerAvailable() {
+public boolean isQrScannerAvailable() {
             return true;
         }
 
