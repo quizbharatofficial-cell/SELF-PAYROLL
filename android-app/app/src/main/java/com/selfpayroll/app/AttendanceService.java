@@ -488,7 +488,7 @@ public class AttendanceService extends Service {
         )
 
                 .setSmallIcon(
-                        R.drawable.icon_512
+                        R.drawable.self_payroll_icon
                 )
 
                 .setContentTitle(
