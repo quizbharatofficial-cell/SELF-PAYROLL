@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="js/auth-guard.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SELF HRMS - Dashboard</title>
+  <meta name="theme-color" content="#1565c0">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>SELF HRMS</h1>
+    <p>Payroll & Attendance System</p>
+  </div>
+  <nav class="topbar-actions" aria-label="Account actions">
+    <a href="account.html" class="topbar-action">Account</a>
+    <a href="mpin.html" class="topbar-action" onclick="sessionStorage.removeItem('selfAttendanceLoginSession')">Lock</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="page-heading">
+    <h2>Dashboard</h2>
+    <p>Employee, attendance and payroll overview</p>
+  </section>
+
+
+  <!-- DASHBOARD SUMMARY -->
+
+  <section class="dashboard-grid">
+
+    <div class="stat-card">
+      <span>Total Employees</span>
+      <strong id="totalEmployees">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Present</span>
+      <strong id="presentCount">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Absent</span>
+      <strong id="absentCount">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Leave</span>
+      <strong id="leaveCount">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Weekly Off</span>
+      <strong id="woCount">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Holiday</span>
+      <strong id="holidayCount">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Late</span>
+      <strong id="lateCount">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>OT Hours</span>
+      <strong id="otCount">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Payroll Generated</span>
+      <strong id="payrollGenerated">0</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Payroll Pending</span>
+      <strong id="payrollPending">0</strong>
+    </div>
+
+  </section>
+
+
+  <!-- MASTER MODULES -->
+
+  <section class="module-section">
+
+    <h2>Masters</h2>
+
+    <div class="module-grid">
+
+      <a href="masters/branch.html" class="module-card">
+        <span class="module-icon">🏢</span>
+        <strong>Branch Master</strong>
+      </a>
+
+      <a href="masters/department.html" class="module-card">
+        <span class="module-icon">🏬</span>
+        <strong>Department Master</strong>
+      </a>
+
+      <a href="masters/designation.html" class="module-card">
+        <span class="module-icon">💼</span>
+        <strong>Designation Master</strong>
+      </a>
+
+      <a href="masters/shift.html" class="module-card">
+        <span class="module-icon">🕒</span>
+        <strong>Shift Master</strong>
+      </a>
+
+      <a href="masters/salary-component.html" class="module-card">
+        <span class="module-icon">₹</span>
+        <strong>Salary Components</strong>
+      </a>
+
+      <a href="masters/employee.html" class="module-card">
+        <span class="module-icon">👤</span>
+        <strong>Employee Master</strong>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ATTENDANCE & PAYROLL -->
+
+  <section class="module-section">
+
+    <h2>Attendance & Payroll</h2>
+
+    <div class="module-grid">
+
+      <a href="self-attendance-home.html" class="module-card">
+        <span class="module-icon">⏱️</span>
+        <strong>Self Attendance</strong>
+      </a>
+
+      <a href="attendance/attendance.html" class="module-card">
+        <span class="module-icon">✅</span>
+        <strong>Attendance</strong>
+      </a>
+
+      <a href="monthly-attendance.html" class="module-card">
+        <span class="module-icon">📅</span>
+        <strong>Monthly Attendance</strong>
+      </a>
+
+      <a href="leave.html" class="module-card">
+        <span class="module-icon">📝</span>
+        <strong>Leave</strong>
+      </a>
+
+      <a href="holiday.html" class="module-card">
+        <span class="module-icon">🏖️</span>
+        <strong>Holiday</strong>
+      </a>
+
+      <a href="payroll/payroll.html" class="module-card">
+        <span class="module-icon">💰</span>
+        <strong>Payroll Processing</strong>
+      </a>
+
+      <a href="payroll/payslip.html" class="module-card">
+        <span class="module-icon">📄</span>
+        <strong>Salary Slip</strong>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- OTHER MODULES -->
+
+  <section class="module-section">
+
+    <h2>Reports & System</h2>
+
+    <div class="module-grid">
+
+      <a href="history.html" class="module-card">
+        <span class="module-icon">🗂️</span>
+        <strong>History</strong>
+      </a>
+
+      <a href="reports.html" class="module-card">
+        <span class="module-icon">📊</span>
+        <strong>Reports</strong>
+      </a>
+
+      <a href="settings.html" class="module-card">
+        <span class="module-icon">⚙️</span>
+        <strong>Settings</strong>
+      </a>
+
+      <a href="account.html" class="module-card">
+        <span class="module-icon">🔐</span>
+        <strong>Account & Security</strong>
+      </a>
+
+      <a href="mpin.html" class="module-card" onclick="sessionStorage.removeItem('selfAttendanceLoginSession')">
+        <span class="module-icon">🔒</span>
+        <strong>Lock with MPIN</strong>
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script src="js/storage.js"></script>
+<script src="js/dashboard.js"></script>
+<script>if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(console.error)); }</script>
+
+</body>
+</html>
