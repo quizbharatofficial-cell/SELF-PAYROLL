@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.JavascriptInterface;
 
 public class MainActivity extends Activity {
 
@@ -43,6 +44,7 @@ updateManager = new UpdateManager(this);
         settings.setAllowFileAccess(true);
 
         webView.setWebViewClient(new WebViewClient());
+        webView.addJavascriptInterface(new AndroidBridge(), "Android");
         webView.loadUrl("file:///android_asset/index.html");
     }
 
@@ -60,6 +62,17 @@ updateManager = new UpdateManager(this);
             updateManager = new UpdateManager(this);
         }
         updateManager.checkManually();
+    }
+
+
+
+    private class AndroidBridge {
+
+        @JavascriptInterface
+        public void checkForUpdate() {
+            runOnUiThread(() -> MainActivity.this.checkForUpdate());
+        }
+
     }
 
 }

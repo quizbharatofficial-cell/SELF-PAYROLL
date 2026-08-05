@@ -216,6 +216,12 @@
         <strong>Lock with MPIN</strong>
       </a>
 
+    
+      <a href="#" class="module-card" onclick="checkNativeUpdate(); return false;">
+        <span class="module-icon">⬆️</span>
+        <strong>Check for Update</strong>
+      </a>
+
     </div>
 
   </section>
@@ -226,6 +232,17 @@
 <script src="js/storage.js"></script>
 <script src="js/dashboard.js"></script>
 <script>if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(console.error)); }</script>
+
+
+<script>
+function checkNativeUpdate() {
+    if (window.Android && typeof Android.checkForUpdate === "function") {
+        Android.checkForUpdate();
+    } else {
+        alert("Android app required.");
+    }
+}
+</script>
 
 </body>
 </html>
