@@ -120,7 +120,7 @@ function viewSlip(id) {
   );
 
   window.location.href =
-    "salary-slip.html";
+    "payroll/payslip.html";
 }
 
 function editPayroll(id) {
@@ -164,7 +164,7 @@ function editPayroll(id) {
   );
 
   window.location.href =
-    "payroll.html";
+    "../payroll/payroll.html";
 }
 
 function deletePayroll(id) {

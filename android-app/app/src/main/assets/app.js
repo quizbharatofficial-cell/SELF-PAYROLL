@@ -2274,7 +2274,7 @@ function openSalarySlip() {
 
 
         location.href =
-            "salary-slip.html";
+            "payroll/payslip.html";
 
 
         return;
@@ -2319,7 +2319,7 @@ function openSalarySlip() {
 
 
             location.href =
-                "salary-slip.html";
+                "payroll/payslip.html";
         }
 
 
@@ -2333,7 +2333,7 @@ function openSalarySlip() {
 
 
     location.href =
-        "salary.html";
+        "payroll/payslip.html";
 }
 
 

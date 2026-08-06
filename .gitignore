@@ -15,3 +15,4 @@ local.properties
 *.bak
 *.before-final
 *.before-smart-code
+android-app/app/build.gradle.before-signing-fix
