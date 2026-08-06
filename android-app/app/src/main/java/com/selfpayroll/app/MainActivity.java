@@ -45,7 +45,7 @@ updateManager = new UpdateManager(this);
 
         webView.setWebViewClient(new WebViewClient());
         webView.addJavascriptInterface(new AndroidBridge(), "Android");
-        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl("file:///android_asset/self-attendance-home.html");
     }
 
     @Override
